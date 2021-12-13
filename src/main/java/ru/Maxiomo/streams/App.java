@@ -74,6 +74,12 @@ public class App {
         DataProcessor.rewriteData(
                 creatorList.stream().collect(Collectors.mapping(Creator::toString, Collectors.toList())),
                 "task7Res.txt");
+        String toConsole = groupedByCreator.entrySet()
+                .stream()
+                .map(e -> e.getKey())
+                .filter(e -> e.length() != 0)
+                .collect(Collectors.joining(", "));
+        System.out.println(toConsole);
         List<String> creatorNames = new ArrayList<>();
         for (Map.Entry<String, List<Car>> entry : groupedByCreator.entrySet()) {
             List<Car> values = entry.getValue();
